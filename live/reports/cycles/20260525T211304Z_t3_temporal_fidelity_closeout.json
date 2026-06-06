@@ -1,0 +1,27 @@
+{
+  "cycle_id": "20260525T211304Z",
+  "status": "PASS",
+  "phase": "Fase 5.V",
+  "task": "T3 — Fidelidad temporal",
+  "files_modified": [
+    "reports/phases/fase_5v_validation_status.json"
+  ],
+  "tests_run": [
+    "python3 -m unittest tests.test_polymarket_feed"
+  ],
+  "evidence": {
+    "slug_epoch": 1779741000,
+    "ts_open_utc": "2026-05-25T20:30:00Z",
+    "ts_close_utc": "2026-05-25T20:45:00Z",
+    "public_event_url": "https://polymarket.com/event/btc-updown-15m-1779741000",
+    "page_label": "May 25, 4:30PM-4:45PM ET",
+    "slug_encodes_ts_open": true,
+    "all_validated_timestamps_are_utc": true,
+    "resolution_source": "Chainlink BTC/USD",
+    "price_to_beat_definition": "Chainlink BTC/USD at ts_open",
+    "chainlink_close_definition": "Chainlink BTC/USD at ts_close"
+  },
+  "errors": [],
+  "risk_remaining": "Live fetch implementation for Chainlink-derived price_to_beat still needs to be wired later, but temporal fidelity itself is validated.",
+  "requires_human_approval": true
+}

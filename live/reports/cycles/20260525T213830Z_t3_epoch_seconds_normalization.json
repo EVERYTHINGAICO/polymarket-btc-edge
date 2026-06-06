@@ -1,0 +1,30 @@
+{
+  "cycle_id": "20260525T213830Z",
+  "status": "PASS",
+  "phase": "Fase 5.V",
+  "task": "T3 — Fidelidad temporal dinámica en epoch seconds",
+  "files_modified": [
+    "src/polymarket_feed.py",
+    "tests/test_polymarket_feed.py",
+    "reports/phases/fase_5v_validation_status.json"
+  ],
+  "tests_run": [
+    "python3 -m unittest tests.test_polymarket_feed"
+  ],
+  "evidence": {
+    "fixture_open_epoch_seconds": 1779741000,
+    "fixture_ts_open_utc": "2026-05-25T20:30:00Z",
+    "fixture_ts_close_utc": "2026-05-25T20:45:00Z",
+    "current_open_epoch_rule": "floor(now_epoch_seconds / 900) * 900",
+    "candidate_probe": [
+      "current_open_epoch-900",
+      "current_open_epoch",
+      "current_open_epoch+900"
+    ],
+    "active_market_rule": "close_epoch_seconds > now_epoch_seconds",
+    "seconds_milliseconds_mixing_removed": true
+  },
+  "errors": [],
+  "risk_remaining": "Live Chainlink fetch remains intentionally out of scope for T3.",
+  "requires_human_approval": true
+}

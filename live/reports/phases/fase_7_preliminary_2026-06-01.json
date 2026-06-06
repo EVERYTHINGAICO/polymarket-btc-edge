@@ -1,0 +1,404 @@
+{
+  "config_version": "1.0.0",
+  "input_hash": "8d36781e6b20e37886ef700af2739beac27aa8c0bc1fdfd1fabd97fcc6739da0",
+  "n_total_complete": 453,
+  "n_after_filter": 358,
+  "min_n_for_verdict": 1000,
+  "project_verdict": "WAIT_FOR_MORE_DATA",
+  "gates": [
+    {
+      "name": "Gate 1",
+      "verdict": "INSUFICIENTE",
+      "primary_metric": 0.6,
+      "detail": {
+        "D_variant": "D_15m_otm_dotm",
+        "D_threshold_abs": 5.0,
+        "n": 35,
+        "successes": 21,
+        "accuracy": 0.6,
+        "p_value_two_sided": 0.31050465907901537,
+        "ci95": [
+          0.421117721881845,
+          0.7612918895466587
+        ],
+        "alpha_corrected": 0.01,
+        "min_accuracy_required": 0.55
+      }
+    },
+    {
+      "name": "Gate 2",
+      "verdict": "INSUFICIENTE",
+      "primary_metric": 0.5652173913043478,
+      "detail": {
+        "indecisive_range": [
+          0.45,
+          0.55
+        ],
+        "D_variant": "D_15m_otm_dotm",
+        "D_threshold_abs": 5.0,
+        "n": 23,
+        "successes": 13,
+        "accuracy": 0.5652173913043478,
+        "p_value_two_sided": 0.6776394844055176,
+        "ci95": [
+          0.3449466074523746,
+          0.7680858004617692
+        ],
+        "implied_edge_mean_abs": 0.024130434782608703,
+        "alpha_corrected": 0.01,
+        "min_accuracy_required": 0.55
+      }
+    },
+    {
+      "name": "Gate 3",
+      "verdict": "INSUFICIENTE",
+      "primary_metric": 30.0,
+      "detail": {
+        "move_threshold_abs": 0.05,
+        "n_windows_with_move": 108,
+        "median_t_move_seconds": 30.0,
+        "p25_t_move_seconds": 30.0,
+        "p75_t_move_seconds": 60.0,
+        "min_t_move_required_seconds": 30.0
+      }
+    },
+    {
+      "name": "Gate 4a",
+      "verdict": "INSUFICIENTE",
+      "primary_metric": 0.9772776876471455,
+      "detail": {
+        "n": 108,
+        "median_gap_chainlink_deribit_abs": 64.99714000000677,
+        "median_typical_move_abs": 61.25412709500233,
+        "median_ratio_gap_over_move": 0.9772776876471455,
+        "ratio_threshold_required": 1.0
+      }
+    },
+    {
+      "name": "Gate 4b",
+      "verdict": "INSUFICIENTE",
+      "primary_metric": 0.07676999999999998,
+      "detail": {
+        "n_bets": 35,
+        "win_rate": 0.6,
+        "taker_fee_rate": 0.07,
+        "spread_estimate": 0.01,
+        "slippage_estimate": 0.0,
+        "ev_net_per_bet": 0.07676999999999998,
+        "min_ev_required": 0.005,
+        "total_net_pnl": 2.686949999999999
+      }
+    }
+  ],
+  "extra": {
+    "run_at_utc": "2026-06-01T19:52:16.188815Z",
+    "n_train": 250,
+    "n_holdout": 108,
+    "kfold_train_accuracy": {
+      "n_splits": 5,
+      "mean_accuracy": 0.46444013502837034,
+      "std_accuracy": 0.1421352557345895,
+      "fold_accuracies": [
+        0.5238095238095238,
+        0.6153846153846154,
+        0.29411764705882354,
+        0.3333333333333333,
+        0.5555555555555556
+      ]
+    },
+    "bonferroni": {
+      "alpha_uncorrected": 0.05,
+      "n_tests": 5,
+      "alpha_corrected": 0.01
+    },
+    "pre_registration": {
+      "config_version": "1.0.0",
+      "frozen_at_utc": "2026-05-30T00:00:00Z"
+    },
+    "exploratory": {
+      "_doc": "Sub-analisis NO parte del pre-registro. No afectan veredicto de gates oficiales.",
+      "chainlink_vs_polymarket_flips": {
+        "n_evaluated": 357,
+        "chainlink_flips": {
+          "count": 25,
+          "rate": 0.0700280112044818
+        },
+        "deribit_flips": {
+          "count": 7,
+          "rate": 0.0196078431372549
+        },
+        "movement_magnitude": {
+          "chainlink_move_median_stable": 69.08326999999554,
+          "chainlink_move_median_flippy": 15.350178250009776,
+          "deribit_move_median_stable": 69.68000000000757,
+          "deribit_move_median_flippy": 14.85000000000582
+        },
+        "d_accuracy_conditional": {
+          "all_D_stable_windows": {
+            "n": 332,
+            "accuracy": 0.4939759036144578,
+            "successes": 164
+          },
+          "all_D_flippy_windows": {
+            "n": 25,
+            "accuracy": 0.36,
+            "successes": 9
+          },
+          "strong_D_stable_windows": {
+            "n": 99,
+            "accuracy": 0.5151515151515151,
+            "successes": 51
+          },
+          "strong_D_flippy_windows": {
+            "n": 5,
+            "accuracy": 0.4,
+            "successes": 2
+          }
+        },
+        "_doc": "EXPLORATORIO. NO parte del pre-registro v1.0.0. Solo para documentar last-tick risk observado."
+      },
+      "d_variants_accuracy": {
+        "n_evaluated": 358,
+        "variants": {
+          "D_5m_otm_dotm": {
+            "all": {
+              "n": 355,
+              "successes": 195,
+              "accuracy": 0.5492957746478874
+            },
+            "strong_abs_gt_5": {
+              "n": 39,
+              "successes": 19,
+              "accuracy": 0.48717948717948717
+            },
+            "distribution": {
+              "min": -220.266174,
+              "max": 48.84196649999999,
+              "mean": -0.9148299511173184,
+              "median": -0.016920499999999998,
+              "stdev": 12.783978082469643
+            }
+          },
+          "D_10m_otm_dotm": {
+            "all": {
+              "n": 358,
+              "successes": 178,
+              "accuracy": 0.4972067039106145
+            },
+            "strong_abs_gt_5": {
+              "n": 69,
+              "successes": 34,
+              "accuracy": 0.4927536231884058
+            },
+            "distribution": {
+              "min": -483.92160449999994,
+              "max": 48.311693,
+              "mean": -3.036541449720671,
+              "median": -0.09811900000000003,
+              "stdev": 32.113115080403006
+            }
+          },
+          "D_15m_otm_dotm": {
+            "all": {
+              "n": 358,
+              "successes": 173,
+              "accuracy": 0.48324022346368717
+            },
+            "strong_abs_gt_5": {
+              "n": 104,
+              "successes": 53,
+              "accuracy": 0.5096153846153846
+            },
+            "distribution": {
+              "min": -484.49355599999996,
+              "max": 66.458347,
+              "mean": -3.1870175265363128,
+              "median": -0.06729174999999993,
+              "stdev": 33.50345565103406
+            }
+          },
+          "D_5m_atm": {
+            "all": {
+              "n": 321,
+              "successes": 154,
+              "accuracy": 0.4797507788161994
+            },
+            "strong_abs_gt_5": {
+              "n": 52,
+              "successes": 22,
+              "accuracy": 0.4230769230769231
+            },
+            "distribution": {
+              "min": -148.406463,
+              "max": 39.910448499999994,
+              "mean": -0.5158443547486032,
+              "median": 0.0,
+              "stdev": 10.139094644952253
+            }
+          },
+          "D_10m_atm": {
+            "all": {
+              "n": 349,
+              "successes": 176,
+              "accuracy": 0.504297994269341
+            },
+            "strong_abs_gt_5": {
+              "n": 87,
+              "successes": 46,
+              "accuracy": 0.5287356321839081
+            },
+            "distribution": {
+              "min": -150.3000925,
+              "max": 66.44654200000005,
+              "mean": -0.8449359427374301,
+              "median": -0.025951749999999996,
+              "stdev": 13.076086960159309
+            }
+          },
+          "D_15m_atm": {
+            "all": {
+              "n": 356,
+              "successes": 178,
+              "accuracy": 0.5
+            },
+            "strong_abs_gt_5": {
+              "n": 103,
+              "successes": 52,
+              "accuracy": 0.5048543689320388
+            },
+            "distribution": {
+              "min": -151.22748850000002,
+              "max": 71.18903600000003,
+              "mean": -1.1315613938547486,
+              "median": -0.008853750000000105,
+              "stdev": 16.37081283990448
+            }
+          }
+        }
+      },
+      "d_brackets_accuracy": {
+        "d_variant": "D_15m_otm_dotm",
+        "n_evaluated": 358,
+        "brackets": [
+          {
+            "lo": 0,
+            "hi": 2,
+            "n": 198,
+            "wins": 98,
+            "accuracy": 0.494949494949495
+          },
+          {
+            "lo": 2,
+            "hi": 5,
+            "n": 56,
+            "wins": 22,
+            "accuracy": 0.39285714285714285
+          },
+          {
+            "lo": 5,
+            "hi": 10,
+            "n": 41,
+            "wins": 22,
+            "accuracy": 0.5365853658536586
+          },
+          {
+            "lo": 10,
+            "hi": 20,
+            "n": 35,
+            "wins": 17,
+            "accuracy": 0.4857142857142857
+          },
+          {
+            "lo": 20,
+            "hi": 100,
+            "n": 25,
+            "wins": 13,
+            "accuracy": 0.52
+          },
+          {
+            "lo": 100,
+            "hi": null,
+            "n": 3,
+            "wins": 1,
+            "accuracy": 0.3333333333333333
+          }
+        ]
+      },
+      "pm_up_open_brackets": {
+        "d_variant": "D_15m_otm_dotm",
+        "d_threshold": 5.0,
+        "n_evaluated": 104,
+        "brackets": [
+          {
+            "lo": 0.0,
+            "hi": 0.4,
+            "n": 3,
+            "wins": 2,
+            "accuracy": 0.6666666666666666
+          },
+          {
+            "lo": 0.4,
+            "hi": 0.45,
+            "n": 8,
+            "wins": 3,
+            "accuracy": 0.375
+          },
+          {
+            "lo": 0.45,
+            "hi": 0.55,
+            "n": 69,
+            "wins": 37,
+            "accuracy": 0.5362318840579711
+          },
+          {
+            "lo": 0.55,
+            "hi": 0.6,
+            "n": 18,
+            "wins": 9,
+            "accuracy": 0.5
+          },
+          {
+            "lo": 0.6,
+            "hi": 1.0,
+            "n": 6,
+            "wins": 2,
+            "accuracy": 0.3333333333333333
+          }
+        ]
+      },
+      "running_accuracy": {
+        "d_variant": "D_15m_otm_dotm",
+        "d_threshold": 5.0,
+        "window_size": 50,
+        "n_total": 104,
+        "chunks": [
+          {
+            "start_idx": 0,
+            "end_idx": 50,
+            "ts_open_first": "2026-05-28T03:30:00Z",
+            "ts_open_last": "2026-05-29T12:30:00Z",
+            "wins": 28,
+            "accuracy": 0.56
+          },
+          {
+            "start_idx": 25,
+            "end_idx": 75,
+            "ts_open_first": "2026-05-28T15:45:00Z",
+            "ts_open_last": "2026-06-01T02:30:00Z",
+            "wins": 27,
+            "accuracy": 0.54
+          },
+          {
+            "start_idx": 50,
+            "end_idx": 100,
+            "ts_open_first": "2026-05-29T12:45:00Z",
+            "ts_open_last": "2026-06-01T16:15:00Z",
+            "wins": 23,
+            "accuracy": 0.46
+          }
+        ]
+      }
+    }
+  },
+  "output_hash": "2114bb45a9b7737e4f083603ea2080b2396bd9c9af2e91189f88498ca9a4cb06"
+}

@@ -1,0 +1,27 @@
+{
+  "cycle_id": "20260525T194812Z",
+  "status": "BLOCKED_ENDPOINT_UNCONFIRMED",
+  "phase": "Fase 5.V",
+  "task": "T3 — Fidelidad temporal",
+  "files_modified": [
+    "reports/phases/fase_5v_validation_status.json"
+  ],
+  "tests_run": [
+    "python3 -m unittest tests.test_polymarket_feed"
+  ],
+  "evidence": {
+    "utc_normalization_present": true,
+    "docs_polymarket_home_status": 200,
+    "docs_polymarket_clob_intro_status": 200,
+    "gamma_api_markets_limit_1_status": 403,
+    "clob_markets_status": 403,
+    "confirmed_active_window_endpoint": false,
+    "confirmed_price_to_beat_origin": false,
+    "confirmed_ts_open_alignment": false
+  },
+  "errors": [
+    "Public read-only discovery from this runtime could not confirm a reliable endpoint for active window metadata."
+  ],
+  "risk_remaining": "Without a confirmed endpoint for window_id/ts_open/price_to_beat, T3 cannot pass honestly.",
+  "requires_human_approval": true
+}

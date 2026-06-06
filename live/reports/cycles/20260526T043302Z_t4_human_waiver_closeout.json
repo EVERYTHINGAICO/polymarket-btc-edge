@@ -1,0 +1,48 @@
+{
+  "cycle_id": "20260526T043302Z",
+  "status": "PASS",
+  "phase": "Fase 5.V",
+  "task": "T4 closeout by explicit human waiver",
+  "files_modified": [
+    "core/goal_selector.py",
+    "reports/phases/fase_5v_validation_status.json",
+    "reports/cycles/20260526T043302Z_t4_human_waiver_closeout.json",
+    "tasks/current_task.md",
+    "README.md",
+    "tests/test_goal_selector.py"
+  ],
+  "decision": {
+    "authority": "PROJECT_DESIGN.md",
+    "human_decision": "Advance Fase 5.V with T4 documented as accepted risk / human waiver. Do not mark technical PASS.",
+    "t4_close_type": "WAIVED_BY_HUMAN",
+    "technical_pass": false,
+    "manual_network_cut_executed": false,
+    "docker_or_network_reconfiguration_performed": false
+  },
+  "state_after_update": {
+    "T1": "PASS",
+    "T2": "PASS",
+    "T3": "PASS",
+    "T4": "WAIVED_BY_HUMAN",
+    "T5": "PASS",
+    "goal_selector_expected": "PHASE_READY_WITH_ACCEPTED_RISK"
+  },
+  "risk": {
+    "accepted": true,
+    "statement": "Real reconnection/resilience behavior under an actual network or power cut remains unverified.",
+    "recommended_before_official_prolonged_collection": true
+  },
+  "tests_run": [
+    "python3 -m unittest tests.test_goal_selector tests.test_autonomous_loop tests.test_executor tests.test_logger tests.test_db tests.test_deribit_feed tests.test_signal tests.test_polymarket_feed",
+    "python3 controller.py --goal-check"
+  ],
+  "audit": {
+    "project_design_modified": false,
+    "env_modified": false,
+    "data_modified": false,
+    "t4_executed": false,
+    "network_cut_performed": false,
+    "phase_auto_advanced": false
+  },
+  "requires_human_approval": true
+}

@@ -1,0 +1,61 @@
+{
+  "scan": "M1_market_making_proxy_samples10s",
+  "on": "holdout",
+  "run_at_utc": "2026-06-03T05:11:41.445613Z",
+  "samples_path": "/mnt/d/EXPERIMENTOS BTC OPTIONS/data/interim/orderbook_m1_samples_10s.parquet",
+  "samples_sha256": "ea58be7c4a30bcfebbee666f1a241bed7d146e42bf1232c36feb069a869dadab",
+  "future_staleness_s": 20,
+  "horizons": [
+    30
+  ],
+  "spread_thresholds": [
+    0.1
+  ],
+  "size_thresholds": [
+    1000.0
+  ],
+  "time_to_close_thresholds": [
+    300
+  ],
+  "min_markets": 50,
+  "limit_markets": null,
+  "eval_stats": [
+    {
+      "horizon_s": 30,
+      "rows": 48546,
+      "markets": 309,
+      "mean_ev_proxy_all_rows": -0.051832900753924105,
+      "mean_future_delta_s": 34.67988600502616
+    }
+  ],
+  "n_rules_tested": 1,
+  "top_rules": [
+    {
+      "horizon_s": 30,
+      "spread_threshold": 0.1,
+      "book_size_threshold": 1000.0,
+      "time_to_close_threshold": 300,
+      "n_markets": 166,
+      "n_decisions": 266,
+      "mean_market_ev_proxy": 0.007845883534136547,
+      "median_market_ev_proxy": 0.0050000000000000044,
+      "market_positive_rate": 0.5602409638554217,
+      "mean_decision_ev_proxy": 0.02188345864661654,
+      "decision_positive_rate": 0.5526315789473685,
+      "ci95_market_ev_low": -0.007047540160642574,
+      "ci95_market_ev_high": 0.021711257530120476,
+      "mean_spread": 0.5544736842105263,
+      "median_spread": 0.52,
+      "mean_book_size": 9082.47522556391,
+      "median_book_size": 7381.33,
+      "mean_future_delta_s": 34.86816917293233,
+      "ttest_p_greater": 0.1424840811024514,
+      "bootstrap_p_greater": 0.141,
+      "n_rules_tested": 1,
+      "bootstrap_p_bonferroni": 0.141,
+      "ttest_p_bonferroni": 0.1424840811024514
+    }
+  ],
+  "csv": "/mnt/d/EXPERIMENTOS BTC OPTIONS/reports/phases/m1_market_making_scan_holdout_samples10s.csv",
+  "interpretation": "TRAIN scan only unless --on holdout is explicitly used after pre-registration. EV_proxy is pre-fill and pre-fee; a positive result is only a candidate for tick/fill validation."
+}

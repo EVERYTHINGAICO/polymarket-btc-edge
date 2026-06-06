@@ -1,0 +1,38 @@
+{
+  "phase": "Fase 6",
+  "status": "PHASE_READY_FOR_HUMAN_APPROVAL",
+  "next_goal": "human supervised F6 collection start",
+  "phase_complete": true,
+  "current_task_path": "tasks/current_task.md",
+  "planner": {
+    "status": "PHASE_READY_FOR_HUMAN_APPROVAL",
+    "next_goal": "human supervised F6 collection start",
+    "phase_complete": true,
+    "requires_human_gate": true,
+    "gate_reason": "Fase 6 preparation is complete; supervised human start gate required before prolonged collection.",
+    "should_execute": false,
+    "planner_summary": "Fase 6 is prepared for a supervised collection start gate."
+  },
+  "task_synthesis": {
+    "text": "Fase 6 preparada; gate humano requerido antes de recolección prolongada.\n",
+    "should_write": true
+  },
+  "project_state": {
+    "approval_active": true,
+    "readiness_report_exists": true,
+    "command_check_exists": true
+  },
+  "audit": {
+    "ok": true,
+    "forbidden_paths": [
+      ".env",
+      "data",
+      "PROJECT_DESIGN.md"
+    ],
+    "forbidden_touched": false,
+    "reason": "Audit passed."
+  },
+  "runner_action": "HUMAN_APPROVAL_STOP",
+  "message": "Fase 6 preparada; gate humano requerido antes de recolección prolongada.",
+  "cycle_index": 3
+}

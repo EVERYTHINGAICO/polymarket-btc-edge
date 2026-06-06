@@ -1,0 +1,101 @@
+# ============================================================
+# Secrets and environment
+# ============================================================
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# ============================================================
+# Data (heavy, private, reproducible from scripts + revisions fijadas)
+# ============================================================
+# Live experiment runtime
+live/data/
+live/reports/live/*.log
+live/state.json
+live/forward_rules_config.json
+live/dashboard_sample.json
+
+# Backfill data (3.8 GB raw + interim + processed)
+backfill/data/
+backfill/.hf_cache_orderbook/
+
+# SQLite live
+*.db
+*.db-shm
+*.db-wal
+
+# ============================================================
+# Python
+# ============================================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+.installed.cfg
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# Test caches
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+
+# Type checkers
+.mypy_cache/
+.pytype/
+.dmypy.json
+dmypy.json
+
+# Jupyter
+.ipynb_checkpoints/
+
+# ============================================================
+# OS / editors
+# ============================================================
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.idea/
+.vscode/settings.json
+*.code-workspace
+
+# ============================================================
+# Logs and temp
+# ============================================================
+*.log
+logs/
+*.tmp
+*.bak
+
+# ============================================================
+# Node (in case a sandbox/ ever ships JS exploration)
+# ============================================================
+node_modules/
+package-lock.json
+yarn.lock
+
+# ============================================================
+# OpenClaw controller runtime (Exp1 only — internal task queue)
+# ============================================================
+live/tasks/in_progress/
+live/tasks/done/
+live/tasks/failed/
+live/tasks/archive/
+live/snapshots/
+live/approvals/

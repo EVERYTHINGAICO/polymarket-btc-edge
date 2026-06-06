@@ -1,0 +1,29 @@
+{
+  "generated_at_utc": "2026-05-27T00:06:50.839747Z",
+  "db_path": "data/observations.db",
+  "row_count": 2,
+  "valid_count": 1,
+  "invalid_count": 0,
+  "skipped_count": 1,
+  "rows": [
+    {
+      "window_id": "demo-window",
+      "ts_open": "2026-05-25T20:30:00Z",
+      "status": "SKIPPED",
+      "valid": false,
+      "issues": [
+        "non_polymarket_btc_15m_window"
+      ]
+    },
+    {
+      "window_id": "btc-updown-15m-1779828300",
+      "ts_open": "2026-05-26T20:45:00Z",
+      "status": "VALID",
+      "valid": true,
+      "issues": [],
+      "open_epoch_seconds": 1779828300,
+      "expected_ts_open": "2026-05-26T20:45:00Z",
+      "epoch_digits": 10
+    }
+  ]
+}

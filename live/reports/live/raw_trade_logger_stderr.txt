@@ -1,0 +1,3 @@
+usage: raw_trade_logger.py [-h] --db DB [--log-path LOG_PATH] [--url URL]
+                           [--run-seconds RUN_SECONDS]
+raw_trade_logger.py: error: unrecognized arguments: DESIGN\data\observations.db DESIGN\reports\live\raw_trade_logger.log

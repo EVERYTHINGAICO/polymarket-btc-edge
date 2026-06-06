@@ -1,0 +1,35 @@
+{
+  "cycle_id": "20260525T061953Z",
+  "status": "PASS_WITH_PENDING_HUMAN_RUN",
+  "mode": "direct",
+  "active_phase": "Fase 6",
+  "task": "tasks/queue/601_phase6_collection_runbook.md",
+  "planner": {
+    "status": "PASS",
+    "summary": "Collection-prep task fits Fase 6.",
+    "risk": "Low."
+  },
+  "builder": {
+    "status": "PASS",
+    "summary": "Prepared bounded collection stub and runbook without launching indefinite live collection.",
+    "files_touched": [
+      "scripts/run_collection_once.py",
+      "reports/phases/fase_6_audit.md",
+      "README.md"
+    ],
+    "risk": "Low."
+  },
+  "tester": {
+    "status": "PASS",
+    "summary": "Collection stub executes and preserves manual gate.",
+    "tests_run": [
+      "python3 scripts/run_collection_once.py"
+    ]
+  },
+  "auditor": {
+    "status": "PASS",
+    "summary": "No uncontrolled live collection was started.",
+    "risk": "Low."
+  },
+  "next_action": "Continue to Fase 7 statistical validation scaffolding."
+}

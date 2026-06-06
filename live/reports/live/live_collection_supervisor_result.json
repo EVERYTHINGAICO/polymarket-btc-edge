@@ -1,0 +1,6 @@
+{
+  "status": "PENDING_HUMAN_CONFIRMATION",
+  "reason": "live collection should only start after T1/T3/T4 human review and confirmed stable runtime",
+  "suggested_command": "python3 -m src.logger",
+  "duration_minutes_requested": 15.0
+}

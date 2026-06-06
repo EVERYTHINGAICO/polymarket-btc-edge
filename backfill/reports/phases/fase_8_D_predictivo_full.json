@@ -1,0 +1,119 @@
+{
+  "config_version": "2.0.0",
+  "input_hash": "f397fe5d3ca3f76c5eb486729f0834c8845918e0015c76a896d118da9a820737",
+  "n_total_complete": 9225,
+  "n_after_filter": 7806,
+  "min_n_for_verdict": 1000,
+  "project_verdict": "NO_EDGE_FIN",
+  "gates": [
+    {
+      "name": "Gate 1",
+      "verdict": "FIN",
+      "primary_metric": 0.4796044499381953,
+      "detail": {
+        "D_variant": "D_15m_otm_dotm",
+        "D_threshold_abs": 5.0,
+        "n": 2427,
+        "successes": 1164,
+        "accuracy": 0.4796044499381953,
+        "p_value_two_sided": 0.04665040700925642,
+        "ci95": [
+          0.45955755909938784,
+          0.4997006221318707
+        ],
+        "alpha_corrected": 0.01,
+        "min_accuracy_required": 0.55
+      }
+    },
+    {
+      "name": "Gate 2",
+      "verdict": "FIN",
+      "primary_metric": 0.4845708775313404,
+      "detail": {
+        "indecisive_range": [
+          0.45,
+          0.55
+        ],
+        "D_variant": "D_15m_otm_dotm",
+        "D_threshold_abs": 5.0,
+        "n": 2074,
+        "successes": 1005,
+        "accuracy": 0.4845708775313404,
+        "p_value_two_sided": 0.166538013010474,
+        "ci95": [
+          0.4628561716976544,
+          0.5063292529461099
+        ],
+        "implied_edge_mean_abs": 0.00923577499941437,
+        "alpha_corrected": 0.01,
+        "min_accuracy_required": 0.55
+      }
+    },
+    {
+      "name": "Gate 3",
+      "verdict": "AVANZA",
+      "primary_metric": 81.0,
+      "detail": {
+        "move_threshold_abs": 0.05,
+        "n_windows_with_move": 6828,
+        "median_t_move_seconds": 81.0,
+        "p25_t_move_seconds": 72.0,
+        "p75_t_move_seconds": 135.0,
+        "min_t_move_required_seconds": 30.0
+      }
+    },
+    {
+      "name": "Gate 4a",
+      "verdict": "AVANZA",
+      "primary_metric": 0.9854928458128859,
+      "detail": {
+        "n": 7803,
+        "median_gap_chainlink_deribit_abs": 93.60056401000475,
+        "median_typical_move_abs": 94.55778299999656,
+        "median_ratio_gap_over_move": 0.9854928458128859,
+        "ratio_threshold_required": 1.0
+      }
+    },
+    {
+      "name": "Gate 4b",
+      "verdict": "FIN",
+      "primary_metric": -0.05835601547008981,
+      "detail": {
+        "n_bets": 2427,
+        "win_rate": 0.4796044499381953,
+        "taker_fee_rate": 0.07,
+        "spread_estimate": 0.01,
+        "slippage_estimate": 0.0,
+        "ev_net_per_bet": -0.05835601547008981,
+        "min_ev_required": 0.005,
+        "total_net_pnl": -141.63004954590798
+      }
+    }
+  ],
+  "extra": {
+    "run_at_utc": "2026-06-02T21:13:22.233225Z",
+    "split_method": "temporal",
+    "evaluated_on": "full",
+    "n_train": 5464,
+    "n_holdout": 2342,
+    "gate1_bootstrap_p_robustness": 0.03986483888404946,
+    "kfold_accuracy": {
+      "n_splits": 5,
+      "mean_accuracy": 0.4794120738229302,
+      "std_accuracy": 0.014850747869922985,
+      "fold_accuracies": [
+        0.476,
+        0.4784394250513347,
+        0.45689655172413796,
+        0.49221789883268485,
+        0.4935064935064935
+      ]
+    },
+    "bonferroni": {
+      "alpha_uncorrected": 0.05,
+      "n_tests": 5,
+      "alpha_corrected": 0.01
+    }
+  },
+  "output_hash": "5f887eb772c8f7fb7e6c969da59ca84da708607f2c523f8642f35a4ea0fb7db0"
+}

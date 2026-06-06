@@ -1,0 +1,30 @@
+{
+  "cycle_id": "20260525T210432Z",
+  "status": "BLOCKED_PRICE_TO_BEAT_SOURCE_UNCONFIRMED",
+  "phase": "Fase 5.V",
+  "task": "T3 — Fidelidad temporal",
+  "files_modified": [
+    "src/polymarket_feed.py",
+    "tests/test_polymarket_feed.py",
+    "reports/phases/fase_5v_validation_status.json"
+  ],
+  "tests_run": [
+    "python3 -m unittest tests.test_polymarket_feed"
+  ],
+  "evidence": {
+    "slug_epoch": 1779741000,
+    "ts_open_utc": "2026-05-25T20:30:00Z",
+    "ts_close_utc": "2026-05-25T20:45:00Z",
+    "public_event_url": "https://polymarket.com/event/btc-updown-15m-1779741000",
+    "page_label": "May 25, 4:30PM-4:45PM ET",
+    "slug_encodes_ts_open": true,
+    "all_validated_timestamps_are_utc": true,
+    "price_to_beat_structured_source_confirmed": false,
+    "chainlink_resolution_seen": true
+  },
+  "errors": [
+    "No structured official read-only source for price_to_beat was confirmed from this runtime."
+  ],
+  "risk_remaining": "Temporal alignment is now evidenced, but price_to_beat still needs an official structured source or explicit human-approved derivation path.",
+  "requires_human_approval": true
+}

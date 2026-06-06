@@ -1,0 +1,33 @@
+{
+  "cycle_id": "20260525T214720Z",
+  "status": "PASS",
+  "phase": "Fase 5.V",
+  "task": "T3 — corrección de evidencia de epoch fixture",
+  "files_modified": [],
+  "search_result": {
+    "pattern": "\\\\b177974100\\\\b",
+    "matches": 0,
+    "scope": [
+      "src/",
+      "tests/",
+      "reports/"
+    ]
+  },
+  "fixture_confirmed": {
+    "slug": "btc-updown-15m-1779741000",
+    "ts_open": "2026-05-25T20:30:00Z",
+    "ts_close": "2026-05-25T20:45:00Z"
+  },
+  "time_convention_confirmed": {
+    "open_epoch_seconds": true,
+    "close_epoch_seconds": true,
+    "active_market_rule": "close_epoch_seconds > now_epoch_seconds",
+    "now_ms_mixing_present": false,
+    "times_100_bug_present": false
+  },
+  "tests_run": [
+    "python3 -m unittest tests.test_polymarket_feed"
+  ],
+  "errors": [],
+  "requires_human_approval": true
+}

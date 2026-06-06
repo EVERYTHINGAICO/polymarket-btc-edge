@@ -1,0 +1,6 @@
+{
+  "status": "BLOCKED_ENDPOINT_UNCONFIRMED",
+  "base_url": "https://clob.polymarket.com",
+  "reason": "active window endpoint not confirmed from current implementation",
+  "base_http_status": 403
+}

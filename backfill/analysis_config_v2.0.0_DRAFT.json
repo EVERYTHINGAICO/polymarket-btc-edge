@@ -1,0 +1,112 @@
+{
+  "$schema_version": "2.0",
+  "_doc": "Pre-registro Exp2. BORRADOR sin firmar. Congelar ANTES de correr gates sobre holdout. Modificar requiere bump de version + _changelog.",
+  "config_version": "2.0.0",
+  "frozen_at_utc": "PENDIENTE_FIRMA",
+  "frozen_by": "PENDIENTE (Pedro)",
+  "applies_to": "Exp2 backfill historico (Polymarket aliplayer1 rev ba1ad37c + Deribit history.deribit.com)",
+
+  "data": {
+    "db_path_relative": "data/observations_exp2.db",
+    "min_n_for_verdict": 1000,
+    "filter_outcome_in": ["Up", "Down"],
+    "filter_is_incomplete": 0,
+    "exclude_window_id": "demo-window",
+    "min_n_trades_15m": 30
+  },
+
+  "split": {
+    "_doc": "TEMPORAL (no aleatorio) - mejora anti-leakage vs Exp1. Holdout = 30% mas reciente por ts_open, SELLADO hasta corrida confirmatoria.",
+    "method": "temporal",
+    "train_holdout_ratio": 0.7,
+    "holdout_is_most_recent": true,
+    "random_seed": 42,
+    "kfold_n_splits": 5,
+    "secondary_random_split_for_exp1_comparison": true
+  },
+
+  "gate1": {
+    "_question": "De las ventanas donde |D| supero umbral, sign(D) coincidio con outcome >50%?",
+    "D_variant": "D_15m_otm_dotm",
+    "D_threshold_abs": 5.0,
+    "alpha": 0.05,
+    "min_accuracy_to_advance": 0.55
+  },
+
+  "gate2": {
+    "_question": "Con pm_up_price_open en [0.45,0.55] (indeciso) y |D| grande, D acerto?",
+    "indecisive_range_inclusive": [0.45, 0.55],
+    "D_variant": "D_15m_otm_dotm",
+    "D_threshold_abs": 5.0,
+    "alpha": 0.05,
+    "min_accuracy_to_advance": 0.55
+  },
+
+  "gate3": {
+    "_question": "La senal aparece ANTES de que el precio del contrato se mueva?",
+    "move_threshold_abs": 0.05,
+    "min_t_move_seconds_to_advance": 30
+  },
+
+  "gate4a": {
+    "_question": "El desfase deribit_index_open vs chainlink_close < movimiento tipico de la ventana?",
+    "_nota_fuente": "chainlink_close y price_to_beat = oraculo Chainlink BTC/USD Polygon (mismo Exp1), leido historico via getRoundData. NO Binance.",
+    "ratio_threshold_to_advance": 1.0
+  },
+
+  "gate4b": {
+    "_question": "Backtest con spread+slippage+fees. Edge neto positivo despues de costos?",
+    "polymarket_taker_fee_rate": 0.07,
+    "spread_estimate": 0.01,
+    "slippage_estimate": 0.0,
+    "min_ev_per_bet_to_advance": 0.005
+  },
+
+  "black_scholes": {
+    "_doc": "Convencion para recomputar delta (los trades historicos no traen delta). Validado vs mark_price Deribit (err mediano 0.0005).",
+    "model": "black76",
+    "iv_source": "trade_iv",
+    "risk_free_rate": 0.0,
+    "tau_convention": "ACT/365",
+    "underlying": "index_price",
+    "delta_round_decimals": 6,
+    "iv_min_exclusive": 0.0,
+    "iv_max_inclusive": 300.0,
+    "sensitivity_r": [0.0, 0.02],
+    "sensitivity_iv_max": [250, 300, 400]
+  },
+
+  "moneyness": {
+    "_doc": "Clasificacion por |delta| (cortes exactos de Exp1 / paper Alexander 2022).",
+    "DOTM": [0.02, 0.125],
+    "OTM": [0.125, 0.375],
+    "ATM": [0.375, 0.625],
+    "otm_dotm_buckets": ["DOTM", "OTM"]
+  },
+
+  "bonferroni": {
+    "_doc": "5 gates oficiales. Variantes extra (D_5m, D_10m) son EXPLORATORIAS, no cuentan para veredicto.",
+    "n_tests_total": 5,
+    "alpha_corrected_per_test": 0.01
+  },
+
+  "robustness": {
+    "_doc": "Veredicto PRINCIPAL = binomtest (igual que Exp1, min_n_for_verdict=1000). El block bootstrap es un chequeo de ROBUSTEZ informativo, NO decide el veredicto. Autocorrelacion medida en train (Ljung-Box p=0.0487, borderline; r~0.03-0.06 trivial, lag1 negativo; se desvanece tras lag 2-3) -> block_size=10 basado en evidencia.",
+    "block_bootstrap": {
+      "role": "robustez_informativa_no_decisoria",
+      "n_resamples": 10000,
+      "block_size_windows": 10,
+      "seed": 42
+    },
+    "ljung_box_on_train": {"measured_Q10": 18.39, "measured_p": 0.0487, "lag1_r": -0.0327}
+  },
+
+  "_changelog": [
+    {
+      "version": "2.0.0",
+      "date_utc": "PENDIENTE_FIRMA",
+      "author": "Pedro",
+      "change": "Pre-registro Exp2. Hereda gates+umbrales de Exp1 v1.0.0 (incluido min_n_for_verdict=1000). CAMBIOS deliberados (auditoria referee): split TEMPORAL (no aleatorio, anti-leakage), delta recomputado Black-76 (validado vs mark_price), moneyness por |delta| (cortes Exp1), filtro IV (<=0 o >300). Variante principal D_15m_otm_dotm (= Exp1, por comparabilidad). Holdout 30% mas reciente SELLADO. block bootstrap = robustez informativa NO decisoria (autocorr medida trivial, block_size=10 por evidencia). NO se uso min_n_efectivo (redundante con min_n_for_verdict=1000, como Exp1)."
+    }
+  ]
+}

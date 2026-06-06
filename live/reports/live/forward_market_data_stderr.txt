@@ -1,0 +1,8 @@
+usage: collect_forward_market_data.py [-h] --db DB [--log-path LOG_PATH]
+                                      [--spot-interval-seconds SPOT_INTERVAL_SECONDS]
+                                      [--orderbook-interval-seconds ORDERBOOK_INTERVAL_SECONDS]
+                                      [--orderbook-max-seconds ORDERBOOK_MAX_SECONDS]
+                                      [--run-seconds RUN_SECONDS]
+                                      [--no-chainlink] [--no-binance]
+                                      [--no-orderbook]
+collect_forward_market_data.py: error: unrecognized arguments: DESIGN\data\observations.db DESIGN\reports\live\forward_market_data.log

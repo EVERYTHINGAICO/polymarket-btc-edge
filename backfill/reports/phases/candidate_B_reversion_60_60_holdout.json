@@ -1,0 +1,38 @@
+{
+  "candidate": "H_B_REVERSION_60_60_005",
+  "rule": {
+    "entry_t_seconds": 60,
+    "exit_t_seconds": 120,
+    "threshold_abs_move_from_open": 0.05,
+    "prediction": "reversion",
+    "max_staleness_seconds": 90
+  },
+  "run_at_utc": "2026-06-02T21:27:39.344528Z",
+  "train": {
+    "label": "train",
+    "n": 647,
+    "successes": 363,
+    "hit_rate": 0.5610510046367851,
+    "binom_p_greater": 0.0010708934913381861,
+    "mean_gross_move": 0.017449768260121346,
+    "median_gross_move": 0.015000015497207642,
+    "total_gross_move": 11.289999961853027,
+    "ttest_p_greater": 1.401057232198719e-05,
+    "max_roundtrip_cost_to_break_even": 0.017449768260121346,
+    "coverage_after_price_availability": 5428
+  },
+  "holdout": {
+    "label": "holdout",
+    "n": 202,
+    "successes": 105,
+    "hit_rate": 0.5198019801980198,
+    "binom_p_greater": 0.31123140477859856,
+    "mean_gross_move": 0.00985148549079895,
+    "median_gross_move": 0.009999990463256836,
+    "total_gross_move": 1.9900000095367432,
+    "ttest_p_greater": 0.09612475774561123,
+    "max_roundtrip_cost_to_break_even": 0.00985148549079895,
+    "coverage_after_price_availability": 2253
+  },
+  "interpretation": "Statistical path edge only. A tradable edge requires orderbook roundtrip cost below max_roundtrip_cost_to_break_even."
+}

@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "transport": "stdlib",
+  "duration_minutes_requested": 5.0,
+  "duration_seconds_actual": 307.11,
+  "raw_trades": 11,
+  "classified_trades": 11,
+  "skipped_trades": 0,
+  "skip_percent": 0.0,
+  "skip_reasons": {},
+  "timeouts": 28,
+  "delta_from_trade": 0,
+  "delta_from_ticker": 11,
+  "delta_missing_after_enrichment": 0,
+  "ticker_fetch_errors": 0,
+  "log_path": "reports/live/t1_smoke_5m.log"
+}

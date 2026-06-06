@@ -1,0 +1,41 @@
+{
+  "T1": {
+    "status": "PASS",
+    "summary": "Deribit live capture passed for 60 minutes with heartbeat/test_request handling, 505/505 trades classified, 0 skipped.",
+    "heartbeats_received": 119,
+    "test_requests_received": 117,
+    "test_responses_sent": 117,
+    "heartbeat_enabled": true,
+    "raw_trades": 505,
+    "classified_trades": 505,
+    "skipped_trades": 0,
+    "skip_percent": 0.0,
+    "delta_from_trade": 0,
+    "delta_from_ticker": 505,
+    "delta_missing_after_enrichment": 0,
+    "ticker_fetch_errors": 0,
+    "close_codes": [],
+    "time_observed_seconds": 3606.0,
+    "log_path": "reports/live/t1_deribit_capture.log"
+  },
+  "T2": {
+    "status": "PASS",
+    "summary": "Synthetic signal tests validate positive D for 100 buyer calls, D≈0 with large V for balanced 50/50 buyer calls/puts, and 16-minute expiry outside the 15-minute window."
+  },
+  "T3": {
+    "status": "PASS",
+    "summary": "Temporal fidelity validated dynamically using epoch seconds end-to-end: Polymarket BTC Up/Down 15m slugs encode open_epoch_seconds, ts_close = ts_open + 900s, current/candidate window derivation uses epoch seconds, Gamma JSON-encoded array fields are handled, and resolution/price_to_beat sources are documented as Chainlink-based without fetching Chainlink in T3."
+  },
+  "T4": {
+    "status": "WAIVED_BY_HUMAN",
+    "summary": "Human waiver accepted to unblock Fase 5.V because the current Docker environment cannot automate a real network/power/connectivity cut. This is not a technical PASS.",
+    "reason": "explicit human decision to accept deferred resilience-test risk and continue phase closure without executing T4 in Docker",
+    "technical_pass": false,
+    "real_resilience_test_executed": false,
+    "risk": "Real reconnection/resilience behavior under an actual network or power cut remains unverified and should be tested before prolonged official data collection."
+  },
+  "T5": {
+    "status": "PASS",
+    "summary": "Controlled restart on a temporary SQLite DB preserved prior rows intact, avoided duplicates, and allowed the observable runtime to continue consistently after restart."
+  }
+}

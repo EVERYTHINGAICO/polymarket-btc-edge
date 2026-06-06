@@ -1,0 +1,896 @@
+{
+  "audit": "BTC_15m_momentum_signal",
+  "run_at_utc": "2026-06-03T06:14:57.933418Z",
+  "fee_rate": 0.018,
+  "data_hashes": {
+    "windows": "6110d9283571c0b312a26a16efcd6ebe365eb46cb620c2c131c89d559065e12c",
+    "outcomes": "3aa7433a789eecf47e4a1ae9df1a1499468182bc63fc6f89c3d8149d5aed97a0",
+    "pm_open": "79344d00f0145a7d105d11709f82d68bc68e67276963f25cc4df745c0ad179a9",
+    "research_dataset": "0f16b6959a8f5546477cf91d9b5c75ad813559cf97ac640c639a6ceb7d5776f6",
+    "binance_btc_1m": "c97538d68a7ff992c3cdcb96cebaa4e84f61ecffc9ce0ef521f33688cef3ca4e",
+    "chainlink_refs": "a9ce324223a91b13847d8dec567d1f5de1cdf12ff6161990e3880e270257a736"
+  },
+  "binance_coverage": {
+    "rows": 168000,
+    "min_ts_s": 1766707200,
+    "max_ts_s": 1776787140,
+    "gaps_not_equal_60s": 0
+  },
+  "doc_claims": {
+    "holdout_n": 2769,
+    "holdout_accuracy": 0.5421,
+    "break_even_accuracy": 0.527
+  },
+  "populations": {
+    "all_windows": {
+      "population": "all_windows",
+      "rows_before_zero_drop": 9231,
+      "split_cut_floor_70pct": 6461,
+      "split_ranges": {
+        "train": {
+          "rows_before_zero_drop": 6461,
+          "min_ts_open_s": 1766795400,
+          "max_ts_open_s": 1772633700
+        },
+        "holdout": {
+          "rows_before_zero_drop": 2770,
+          "min_ts_open_s": 1772634600,
+          "max_ts_open_s": 1776729600
+        }
+      },
+      "binance_join": {
+        "missing_open_price": 0,
+        "missing_lag_price": 0,
+        "max_signal_ts_minus_open_s": 0,
+        "lag_seconds": 300
+      },
+      "metrics": {
+        "train": {
+          "n": 6432,
+          "wins": 3449,
+          "accuracy": 0.5362251243781094,
+          "binom_p_greater": 3.306310878854502e-09,
+          "missing_momentum": 0,
+          "zero_momentum": 29,
+          "mean_entry": 0.49624300354498607,
+          "mean_entry_with_fee": 0.5051753776087959,
+          "break_even_accuracy_flat_fee": 0.5051753776087959,
+          "accuracy_minus_break_even": 0.03104974676931349,
+          "mean_gross_pnl": 0.03998212083312335,
+          "mean_net_pnl": 0.031049746769313602,
+          "median_net_pnl": 0.445189983010292,
+          "net_ttest_p_greater": 2.817857180408151e-07,
+          "net_bootstrap_p_greater": 0.0,
+          "net_bootstrap_ci95_low": 0.018849598014425827,
+          "net_bootstrap_ci95_high": 0.04333169839807615
+        },
+        "holdout": {
+          "n": 2769,
+          "wins": 1501,
+          "accuracy": 0.5420729505236548,
+          "binom_p_greater": 5.137243053884427e-06,
+          "missing_momentum": 0,
+          "zero_momentum": 1,
+          "mean_entry": 0.4978114846554333,
+          "mean_entry_with_fee": 0.5067720913792312,
+          "break_even_accuracy_flat_fee": 0.5067720913792312,
+          "accuracy_minus_break_even": 0.0353008591444236,
+          "mean_gross_pnl": 0.04426146586822146,
+          "mean_net_pnl": 0.035300859144423664,
+          "median_net_pnl": 0.45536997330188755,
+          "net_ttest_p_greater": 9.552350112454435e-05,
+          "net_bootstrap_p_greater": 0.0,
+          "net_bootstrap_ci95_low": 0.01656446723667518,
+          "net_bootstrap_ci95_high": 0.05339149139723748
+        },
+        "all": {
+          "n": 9201,
+          "wins": 4950,
+          "accuracy": 0.5379850016302575,
+          "binom_p_greater": 1.6667693709937978e-13,
+          "missing_momentum": 0,
+          "zero_momentum": 30,
+          "mean_entry": 0.49671503095448816,
+          "mean_entry_with_fee": 0.505655901511669,
+          "break_even_accuracy_flat_fee": 0.505655901511669,
+          "accuracy_minus_break_even": 0.03232910011858858,
+          "mean_gross_pnl": 0.04126997067576944,
+          "mean_net_pnl": 0.03232910011858865,
+          "median_net_pnl": 0.445189983010292,
+          "net_ttest_p_greater": 2.3272736486707523e-10,
+          "net_bootstrap_p_greater": 0.0,
+          "net_bootstrap_ci95_low": 0.022237551329859346,
+          "net_bootstrap_ci95_high": 0.04235549381516615
+        }
+      },
+      "threshold_table": [
+        {
+          "split": "train",
+          "abs_momentum_ret_threshold": 0.0,
+          "n": 6432,
+          "coverage_of_split": 1.0,
+          "accuracy": 0.5362251243781094
+        },
+        {
+          "split": "train",
+          "abs_momentum_ret_threshold": 0.001,
+          "n": 2028,
+          "coverage_of_split": 0.31529850746268656,
+          "accuracy": 0.5473372781065089
+        },
+        {
+          "split": "train",
+          "abs_momentum_ret_threshold": 0.002,
+          "n": 790,
+          "coverage_of_split": 0.12282338308457712,
+          "accuracy": 0.5481012658227848
+        },
+        {
+          "split": "holdout",
+          "abs_momentum_ret_threshold": 0.0,
+          "n": 2769,
+          "coverage_of_split": 1.0,
+          "accuracy": 0.5420729505236548
+        },
+        {
+          "split": "holdout",
+          "abs_momentum_ret_threshold": 0.001,
+          "n": 844,
+          "coverage_of_split": 0.30480317804261464,
+          "accuracy": 0.5959715639810427
+        },
+        {
+          "split": "holdout",
+          "abs_momentum_ret_threshold": 0.002,
+          "n": 263,
+          "coverage_of_split": 0.09498013723365836,
+          "accuracy": 0.6007604562737643
+        },
+        {
+          "split": "all",
+          "abs_momentum_ret_threshold": 0.0,
+          "n": 9201,
+          "coverage_of_split": 1.0,
+          "accuracy": 0.5379850016302575
+        },
+        {
+          "split": "all",
+          "abs_momentum_ret_threshold": 0.001,
+          "n": 2872,
+          "coverage_of_split": 0.3121399847842626,
+          "accuracy": 0.5616295264623955
+        },
+        {
+          "split": "all",
+          "abs_momentum_ret_threshold": 0.002,
+          "n": 1053,
+          "coverage_of_split": 0.11444408216498207,
+          "accuracy": 0.5612535612535613
+        }
+      ],
+      "mechanism_by_split": {
+        "train": {
+          "corr_momentum_ret_vs_pm_open_minus_half": {
+            "pearson_r": -0.11409356497971423,
+            "pearson_p": 4.372131301427247e-20,
+            "spearman_rho": -0.12818694026810923,
+            "spearman_p": 5.653171079814056e-25,
+            "n": 6432
+          },
+          "regimes": [
+            {
+              "regime": "bullish_momentum",
+              "n": 3170,
+              "realized_p_up": 0.5337539432176656,
+              "mean_pm_up_price_open": 0.4974652999912151,
+              "up_gap_realized_minus_price": 0.03628864322645048,
+              "down_gap_realized_minus_price": -0.036288643226450534
+            },
+            {
+              "regime": "bearish_momentum",
+              "n": 3262,
+              "realized_p_up": 0.4613733905579399,
+              "mean_pm_up_price_open": 0.5049448197948502,
+              "up_gap_realized_minus_price": -0.043571429236910264,
+              "down_gap_realized_minus_price": 0.043571429236910264
+            }
+          ],
+          "momentum_vs_pm_price_signal": {
+            "agree": {
+              "n": 1474,
+              "accuracy": 0.5861601085481682
+            },
+            "disagree": {
+              "n": 1968,
+              "accuracy": 0.5025406504065041
+            }
+          },
+          "momentum_vs_price_to_beat_signal": {
+            "agree": {
+              "n": 3713,
+              "accuracy": 0.5623485052518179
+            },
+            "disagree": {
+              "n": 2719,
+              "accuracy": 0.5005516734093417
+            }
+          }
+        },
+        "holdout": {
+          "corr_momentum_ret_vs_pm_open_minus_half": {
+            "pearson_r": -0.1020983875371308,
+            "pearson_p": 7.276855359557417e-08,
+            "spearman_rho": -0.09487309128171739,
+            "spearman_p": 5.692304310887949e-07,
+            "n": 2769
+          },
+          "regimes": [
+            {
+              "regime": "bullish_momentum",
+              "n": 1379,
+              "realized_p_up": 0.5525743292240755,
+              "mean_pm_up_price_open": 0.49779550488052204,
+              "up_gap_realized_minus_price": 0.05477882434355341,
+              "down_gap_realized_minus_price": -0.05477882434355341
+            },
+            {
+              "regime": "bearish_momentum",
+              "n": 1390,
+              "realized_p_up": 0.4683453237410072,
+              "mean_pm_up_price_open": 0.5021726620283058,
+              "up_gap_realized_minus_price": -0.033827338287298614,
+              "down_gap_realized_minus_price": 0.03382733828729867
+            }
+          ],
+          "momentum_vs_pm_price_signal": {
+            "agree": {
+              "n": 405,
+              "accuracy": 0.5703703703703704
+            },
+            "disagree": {
+              "n": 529,
+              "accuracy": 0.497164461247637
+            }
+          },
+          "momentum_vs_price_to_beat_signal": {
+            "agree": {
+              "n": 1810,
+              "accuracy": 0.5779005524861879
+            },
+            "disagree": {
+              "n": 959,
+              "accuracy": 0.4744525547445255
+            }
+          }
+        },
+        "all": {
+          "corr_momentum_ret_vs_pm_open_minus_half": {
+            "pearson_r": -0.11151346965786214,
+            "pearson_p": 7.471993738425813e-27,
+            "spearman_rho": -0.1183815891553984,
+            "spearman_p": 4.483478348282466e-30,
+            "n": 9201
+          },
+          "regimes": [
+            {
+              "regime": "bullish_momentum",
+              "n": 4549,
+              "realized_p_up": 0.5394592218069906,
+              "mean_pm_up_price_open": 0.49756539947293726,
+              "up_gap_realized_minus_price": 0.04189382233405331,
+              "down_gap_realized_minus_price": -0.041893822334053366
+            },
+            {
+              "regime": "bearish_momentum",
+              "n": 4652,
+              "realized_p_up": 0.46345657781599314,
+              "mean_pm_up_price_open": 0.5041165095421638,
+              "up_gap_realized_minus_price": -0.04065993172617066,
+              "down_gap_realized_minus_price": 0.04065993172617066
+            }
+          ],
+          "momentum_vs_pm_price_signal": {
+            "agree": {
+              "n": 1879,
+              "accuracy": 0.5827567855242151
+            },
+            "disagree": {
+              "n": 2497,
+              "accuracy": 0.5014016820184221
+            }
+          },
+          "momentum_vs_price_to_beat_signal": {
+            "agree": {
+              "n": 5523,
+              "accuracy": 0.5674452290421872
+            },
+            "disagree": {
+              "n": 3678,
+              "accuracy": 0.4937466014138119
+            }
+          }
+        }
+      }
+    },
+    "research_all": {
+      "population": "research_all",
+      "rows_before_zero_drop": 9225,
+      "split_cut_floor_70pct": 6457,
+      "split_ranges": {
+        "train": {
+          "rows_before_zero_drop": 6457,
+          "min_ts_open_s": 1766795400,
+          "max_ts_open_s": 1772635500
+        },
+        "holdout": {
+          "rows_before_zero_drop": 2768,
+          "min_ts_open_s": 1772636400,
+          "max_ts_open_s": 1776729600
+        }
+      },
+      "binance_join": {
+        "missing_open_price": 0,
+        "missing_lag_price": 0,
+        "max_signal_ts_minus_open_s": 0,
+        "lag_seconds": 300
+      },
+      "metrics": {
+        "train": {
+          "n": 6428,
+          "wins": 3446,
+          "accuracy": 0.5360920970752956,
+          "binom_p_greater": 3.7952710302012656e-09,
+          "missing_momentum": 0,
+          "zero_momentum": 29,
+          "mean_entry": 0.496218108088149,
+          "mean_entry_with_fee": 0.5051500340337357,
+          "break_even_accuracy_flat_fee": 0.5051500340337357,
+          "accuracy_minus_break_even": 0.030942063041559886,
+          "mean_gross_pnl": 0.039873988987146586,
+          "mean_net_pnl": 0.0309420630415599,
+          "median_net_pnl": 0.445189983010292,
+          "net_ttest_p_greater": 3.105518803457915e-07,
+          "net_bootstrap_p_greater": 0.0,
+          "net_bootstrap_ci95_low": 0.0187768984317047,
+          "net_bootstrap_ci95_high": 0.04328039132513745
+        },
+        "holdout": {
+          "n": 2767,
+          "wins": 1501,
+          "accuracy": 0.5424647632815324,
+          "binom_p_greater": 4.273566626313818e-06,
+          "missing_momentum": 0,
+          "zero_momentum": 1,
+          "mean_entry": 0.49782074485438627,
+          "mean_entry_with_fee": 0.5067815182617653,
+          "break_even_accuracy_flat_fee": 0.5067815182617653,
+          "accuracy_minus_break_even": 0.03568324501976705,
+          "mean_gross_pnl": 0.044644018427146055,
+          "mean_net_pnl": 0.03568324501976711,
+          "median_net_pnl": 0.45536997330188755,
+          "net_ttest_p_greater": 8.172273918233372e-05,
+          "net_bootstrap_p_greater": 0.0,
+          "net_bootstrap_ci95_low": 0.016878297121819066,
+          "net_bootstrap_ci95_high": 0.05472523932903516
+        },
+        "all": {
+          "n": 9195,
+          "wins": 4947,
+          "accuracy": 0.5380097879282218,
+          "binom_p_greater": 1.6376239405285695e-13,
+          "missing_momentum": 0,
+          "zero_momentum": 30,
+          "mean_entry": 0.4967003806201967,
+          "mean_entry_with_fee": 0.5056409874713603,
+          "break_even_accuracy_flat_fee": 0.5056409874713603,
+          "accuracy_minus_break_even": 0.032368800456861524,
+          "mean_gross_pnl": 0.04130940730802516,
+          "mean_net_pnl": 0.03236880045686162,
+          "median_net_pnl": 0.445189983010292,
+          "net_ttest_p_greater": 2.243038074144979e-10,
+          "net_bootstrap_p_greater": 0.0,
+          "net_bootstrap_ci95_low": 0.022274442451262016,
+          "net_bootstrap_ci95_high": 0.0425200636876374
+        }
+      },
+      "threshold_table": [
+        {
+          "split": "train",
+          "abs_momentum_ret_threshold": 0.0,
+          "n": 6428,
+          "coverage_of_split": 1.0,
+          "accuracy": 0.5360920970752956
+        },
+        {
+          "split": "train",
+          "abs_momentum_ret_threshold": 0.001,
+          "n": 2028,
+          "coverage_of_split": 0.31549471064094586,
+          "accuracy": 0.546844181459566
+        },
+        {
+          "split": "train",
+          "abs_momentum_ret_threshold": 0.002,
+          "n": 791,
+          "coverage_of_split": 0.1230553827006845,
+          "accuracy": 0.5461441213653603
+        },
+        {
+          "split": "holdout",
+          "abs_momentum_ret_threshold": 0.0,
+          "n": 2767,
+          "coverage_of_split": 1.0,
+          "accuracy": 0.5424647632815324
+        },
+        {
+          "split": "holdout",
+          "abs_momentum_ret_threshold": 0.001,
+          "n": 842,
+          "coverage_of_split": 0.3043006866642573,
+          "accuracy": 0.5973871733966746
+        },
+        {
+          "split": "holdout",
+          "abs_momentum_ret_threshold": 0.002,
+          "n": 261,
+          "coverage_of_split": 0.0943259848211059,
+          "accuracy": 0.6053639846743295
+        },
+        {
+          "split": "all",
+          "abs_momentum_ret_threshold": 0.0,
+          "n": 9195,
+          "coverage_of_split": 1.0,
+          "accuracy": 0.5380097879282218
+        },
+        {
+          "split": "all",
+          "abs_momentum_ret_threshold": 0.001,
+          "n": 2870,
+          "coverage_of_split": 0.31212615551930395,
+          "accuracy": 0.5616724738675958
+        },
+        {
+          "split": "all",
+          "abs_momentum_ret_threshold": 0.002,
+          "n": 1052,
+          "coverage_of_split": 0.1144100054377379,
+          "accuracy": 0.5608365019011406
+        }
+      ],
+      "mechanism_by_split": {
+        "train": {
+          "corr_momentum_ret_vs_pm_open_minus_half": {
+            "pearson_r": -0.11461210053809223,
+            "pearson_p": 3.0381326697786336e-20,
+            "spearman_rho": -0.1288445822515128,
+            "spearman_p": 3.348138755708183e-25,
+            "n": 6428
+          },
+          "regimes": [
+            {
+              "regime": "bullish_momentum",
+              "n": 3168,
+              "realized_p_up": 0.5337752525252525,
+              "mean_pm_up_price_open": 0.49746212152049246,
+              "up_gap_realized_minus_price": 0.036313131004760024,
+              "down_gap_realized_minus_price": -0.03631313100476008
+            },
+            {
+              "regime": "bearish_momentum",
+              "n": 3260,
+              "realized_p_up": 0.4616564417177914,
+              "mean_pm_up_price_open": 0.5049907982166559,
+              "up_gap_realized_minus_price": -0.043334356498864524,
+              "down_gap_realized_minus_price": 0.043334356498864524
+            }
+          ],
+          "momentum_vs_pm_price_signal": {
+            "agree": {
+              "n": 1472,
+              "accuracy": 0.5862771739130435
+            },
+            "disagree": {
+              "n": 1968,
+              "accuracy": 0.5020325203252033
+            }
+          },
+          "momentum_vs_price_to_beat_signal": {
+            "agree": {
+              "n": 3712,
+              "accuracy": 0.5619612068965517
+            },
+            "disagree": {
+              "n": 2716,
+              "accuracy": 0.5007363770250368
+            }
+          }
+        },
+        "holdout": {
+          "corr_momentum_ret_vs_pm_open_minus_half": {
+            "pearson_r": -0.10159097484739674,
+            "pearson_p": 8.538507793331615e-08,
+            "spearman_rho": -0.09487685717905979,
+            "spearman_p": 5.740005213347535e-07,
+            "n": 2767
+          },
+          "regimes": [
+            {
+              "regime": "bullish_momentum",
+              "n": 1378,
+              "realized_p_up": 0.5529753265602322,
+              "mean_pm_up_price_open": 0.497819304228348,
+              "up_gap_realized_minus_price": 0.05515602233188416,
+              "down_gap_realized_minus_price": -0.0551560223318841
+            },
+            {
+              "regime": "bearish_momentum",
+              "n": 1389,
+              "realized_p_up": 0.4679625629949604,
+              "mean_pm_up_price_open": 0.502177825928421,
+              "up_gap_realized_minus_price": -0.034215262933460555,
+              "down_gap_realized_minus_price": 0.034215262933460555
+            }
+          ],
+          "momentum_vs_pm_price_signal": {
+            "agree": {
+              "n": 404,
+              "accuracy": 0.5717821782178217
+            },
+            "disagree": {
+              "n": 528,
+              "accuracy": 0.4981060606060606
+            }
+          },
+          "momentum_vs_price_to_beat_signal": {
+            "agree": {
+              "n": 1808,
+              "accuracy": 0.5785398230088495
+            },
+            "disagree": {
+              "n": 959,
+              "accuracy": 0.4744525547445255
+            }
+          }
+        },
+        "all": {
+          "corr_momentum_ret_vs_pm_open_minus_half": {
+            "pearson_r": -0.11184121322828527,
+            "pearson_p": 5.503637972971006e-27,
+            "spearman_rho": -0.11883943132079787,
+            "spearman_p": 2.8092276054087443e-30,
+            "n": 9195
+          },
+          "regimes": [
+            {
+              "regime": "bullish_momentum",
+              "n": 4546,
+              "realized_p_up": 0.5395952485701716,
+              "mean_pm_up_price_open": 0.4975703920377439,
+              "up_gap_realized_minus_price": 0.04202485653242771,
+              "down_gap_realized_minus_price": -0.04202485653242771
+            },
+            {
+              "regime": "bearish_momentum",
+              "n": 4649,
+              "realized_p_up": 0.4635405463540546,
+              "mean_pm_up_price_open": 0.5041503554314638,
+              "up_gap_realized_minus_price": -0.04060980907740919,
+              "down_gap_realized_minus_price": 0.04060980907740919
+            }
+          ],
+          "momentum_vs_pm_price_signal": {
+            "agree": {
+              "n": 1876,
+              "accuracy": 0.5831556503198294
+            },
+            "disagree": {
+              "n": 2496,
+              "accuracy": 0.5012019230769231
+            }
+          },
+          "momentum_vs_price_to_beat_signal": {
+            "agree": {
+              "n": 5520,
+              "accuracy": 0.5673913043478261
+            },
+            "disagree": {
+              "n": 3675,
+              "accuracy": 0.49387755102040815
+            }
+          }
+        }
+      }
+    },
+    "canonical_n_trades_ge_30": {
+      "population": "canonical_n_trades_ge_30",
+      "rows_before_zero_drop": 7806,
+      "split_cut_floor_70pct": 5464,
+      "split_ranges": {
+        "train": {
+          "rows_before_zero_drop": 5464,
+          "min_ts_open_s": 1766795400,
+          "max_ts_open_s": 1772708400
+        },
+        "holdout": {
+          "rows_before_zero_drop": 2342,
+          "min_ts_open_s": 1772709300,
+          "max_ts_open_s": 1776728700
+        }
+      },
+      "binance_join": {
+        "missing_open_price": 0,
+        "missing_lag_price": 0,
+        "max_signal_ts_minus_open_s": 0,
+        "lag_seconds": 300
+      },
+      "metrics": {
+        "train": {
+          "n": 5454,
+          "wins": 2885,
+          "accuracy": 0.5289695636230289,
+          "binom_p_greater": 9.930164053640943e-06,
+          "missing_momentum": 0,
+          "zero_momentum": 10,
+          "mean_entry": 0.49548038119551985,
+          "mean_entry_with_fee": 0.5043990280570392,
+          "break_even_accuracy_flat_fee": 0.5043990280570392,
+          "accuracy_minus_break_even": 0.02457053556598976,
+          "mean_gross_pnl": 0.033489182427509125,
+          "mean_net_pnl": 0.02457053556598976,
+          "median_net_pnl": 0.43500999271869656,
+          "net_ttest_p_greater": 0.00013564682200722738,
+          "net_bootstrap_p_greater": 0.0004,
+          "net_bootstrap_ci95_low": 0.01189394175537152,
+          "net_bootstrap_ci95_high": 0.038054759299838155
+        },
+        "holdout": {
+          "n": 2341,
+          "wins": 1244,
+          "accuracy": 0.5313968389577104,
+          "binom_p_greater": 0.0012705423430591112,
+          "missing_momentum": 0,
+          "zero_momentum": 1,
+          "mean_entry": 0.4977167880672616,
+          "mean_entry_with_fee": 0.5066756902524724,
+          "break_even_accuracy_flat_fee": 0.5066756902524724,
+          "accuracy_minus_break_even": 0.024721148705238005,
+          "mean_gross_pnl": 0.033680050890448766,
+          "mean_net_pnl": 0.024721148705238057,
+          "median_net_pnl": 0.445189983010292,
+          "net_ttest_p_greater": 0.008153254383627637,
+          "net_bootstrap_p_greater": 0.008,
+          "net_bootstrap_ci95_low": 0.004915810711988013,
+          "net_bootstrap_ci95_high": 0.04431586217192606
+        },
+        "all": {
+          "n": 7795,
+          "wins": 4129,
+          "accuracy": 0.5296985246953175,
+          "binom_p_greater": 8.281680971275426e-08,
+          "missing_momentum": 0,
+          "zero_momentum": 11,
+          "mean_entry": 0.4961520205138967,
+          "mean_entry_with_fee": 0.5050827568831469,
+          "break_even_accuracy_flat_fee": 0.5050827568831469,
+          "accuracy_minus_break_even": 0.024615767812170675,
+          "mean_gross_pnl": 0.03354650418142083,
+          "mean_net_pnl": 0.024615767812170685,
+          "median_net_pnl": 0.43500999271869656,
+          "net_ttest_p_greater": 6.427855349160286e-06,
+          "net_bootstrap_p_greater": 0.0,
+          "net_bootstrap_ci95_low": 0.013255067497536188,
+          "net_bootstrap_ci95_high": 0.03578119691180963
+        }
+      },
+      "threshold_table": [
+        {
+          "split": "train",
+          "abs_momentum_ret_threshold": 0.0,
+          "n": 5454,
+          "coverage_of_split": 1.0,
+          "accuracy": 0.5289695636230289
+        },
+        {
+          "split": "train",
+          "abs_momentum_ret_threshold": 0.001,
+          "n": 1961,
+          "coverage_of_split": 0.35955262192885956,
+          "accuracy": 0.5466598674145844
+        },
+        {
+          "split": "train",
+          "abs_momentum_ret_threshold": 0.002,
+          "n": 788,
+          "coverage_of_split": 0.1444811147781445,
+          "accuracy": 0.5431472081218274
+        },
+        {
+          "split": "holdout",
+          "abs_momentum_ret_threshold": 0.0,
+          "n": 2341,
+          "coverage_of_split": 1.0,
+          "accuracy": 0.5313968389577104
+        },
+        {
+          "split": "holdout",
+          "abs_momentum_ret_threshold": 0.001,
+          "n": 754,
+          "coverage_of_split": 0.3220845792396412,
+          "accuracy": 0.5915119363395226
+        },
+        {
+          "split": "holdout",
+          "abs_momentum_ret_threshold": 0.002,
+          "n": 237,
+          "coverage_of_split": 0.10123878684322939,
+          "accuracy": 0.5949367088607594
+        },
+        {
+          "split": "all",
+          "abs_momentum_ret_threshold": 0.0,
+          "n": 7795,
+          "coverage_of_split": 1.0,
+          "accuracy": 0.5296985246953175
+        },
+        {
+          "split": "all",
+          "abs_momentum_ret_threshold": 0.001,
+          "n": 2715,
+          "coverage_of_split": 0.34830019243104554,
+          "accuracy": 0.5591160220994476
+        },
+        {
+          "split": "all",
+          "abs_momentum_ret_threshold": 0.002,
+          "n": 1025,
+          "coverage_of_split": 0.13149454778704298,
+          "accuracy": 0.5551219512195122
+        }
+      ],
+      "mechanism_by_split": {
+        "train": {
+          "corr_momentum_ret_vs_pm_open_minus_half": {
+            "pearson_r": -0.12988518233669244,
+            "pearson_p": 5.926697765359774e-22,
+            "spearman_rho": -0.14143965569640746,
+            "spearman_p": 9.021596250856695e-26,
+            "n": 5454
+          },
+          "regimes": [
+            {
+              "regime": "bullish_momentum",
+              "n": 2672,
+              "realized_p_up": 0.531062874251497,
+              "mean_pm_up_price_open": 0.49646893745946313,
+              "up_gap_realized_minus_price": 0.034593936792033875,
+              "down_gap_realized_minus_price": -0.03459393679203393
+            },
+            {
+              "regime": "bearish_momentum",
+              "n": 2782,
+              "realized_p_up": 0.47304097771387493,
+              "mean_pm_up_price_open": 0.5054690876532424,
+              "up_gap_realized_minus_price": -0.032428109939367455,
+              "down_gap_realized_minus_price": 0.03242810993936751
+            }
+          ],
+          "momentum_vs_pm_price_signal": {
+            "agree": {
+              "n": 1219,
+              "accuracy": 0.5783429040196882
+            },
+            "disagree": {
+              "n": 1706,
+              "accuracy": 0.5005861664712778
+            }
+          },
+          "momentum_vs_price_to_beat_signal": {
+            "agree": {
+              "n": 3167,
+              "accuracy": 0.5617303441742975
+            },
+            "disagree": {
+              "n": 2287,
+              "accuracy": 0.4836029733275033
+            }
+          }
+        },
+        "holdout": {
+          "corr_momentum_ret_vs_pm_open_minus_half": {
+            "pearson_r": -0.09781736052058125,
+            "pearson_p": 2.1200519908973983e-06,
+            "spearman_rho": -0.09436835452728107,
+            "spearman_p": 4.792356790650165e-06,
+            "n": 2341
+          },
+          "regimes": [
+            {
+              "regime": "bullish_momentum",
+              "n": 1168,
+              "realized_p_up": 0.5419520547945206,
+              "mean_pm_up_price_open": 0.49753424744695834,
+              "up_gap_realized_minus_price": 0.04441780734756223,
+              "down_gap_realized_minus_price": -0.04441780734756218
+            },
+            {
+              "regime": "bearish_momentum",
+              "n": 1173,
+              "realized_p_up": 0.47911338448422847,
+              "mean_pm_up_price_open": 0.5021014494054458,
+              "up_gap_realized_minus_price": -0.0229880649212173,
+              "down_gap_realized_minus_price": 0.0229880649212173
+            }
+          ],
+          "momentum_vs_pm_price_signal": {
+            "agree": {
+              "n": 328,
+              "accuracy": 0.5823170731707317
+            },
+            "disagree": {
+              "n": 427,
+              "accuracy": 0.4613583138173302
+            }
+          },
+          "momentum_vs_price_to_beat_signal": {
+            "agree": {
+              "n": 1524,
+              "accuracy": 0.5695538057742782
+            },
+            "disagree": {
+              "n": 817,
+              "accuracy": 0.4602203182374541
+            }
+          }
+        },
+        "all": {
+          "corr_momentum_ret_vs_pm_open_minus_half": {
+            "pearson_r": -0.12282644157256867,
+            "pearson_p": 1.3777183036212865e-27,
+            "spearman_rho": -0.1282729041014059,
+            "spearman_p": 5.8780564900001316e-30,
+            "n": 7795
+          },
+          "regimes": [
+            {
+              "regime": "bullish_momentum",
+              "n": 3840,
+              "realized_p_up": 0.534375,
+              "mean_pm_up_price_open": 0.49679296924732624,
+              "up_gap_realized_minus_price": 0.0375820307526738,
+              "down_gap_realized_minus_price": -0.037582030752673745
+            },
+            {
+              "regime": "bearish_momentum",
+              "n": 3955,
+              "realized_p_up": 0.47484197218710494,
+              "mean_pm_up_price_open": 0.5044702912778529,
+              "up_gap_realized_minus_price": -0.02962831909074798,
+              "down_gap_realized_minus_price": 0.029628319090748034
+            }
+          ],
+          "momentum_vs_pm_price_signal": {
+            "agree": {
+              "n": 1547,
+              "accuracy": 0.579185520361991
+            },
+            "disagree": {
+              "n": 2133,
+              "accuracy": 0.4927332395686826
+            }
+          },
+          "momentum_vs_price_to_beat_signal": {
+            "agree": {
+              "n": 4691,
+              "accuracy": 0.5642720102323598
+            },
+            "disagree": {
+              "n": 3104,
+              "accuracy": 0.47744845360824745
+            }
+          }
+        }
+      }
+    }
+  }
+}

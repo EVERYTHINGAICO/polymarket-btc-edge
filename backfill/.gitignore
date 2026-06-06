@@ -1,0 +1,14 @@
+# Datos (pesados, reproducibles desde los scripts + revisions fijadas)
+data/raw/
+data/interim/
+data/processed/
+data/*.db
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+
+# Logs
+*.log

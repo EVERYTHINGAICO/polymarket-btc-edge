@@ -1,0 +1,74 @@
+{
+  "$schema_version": "1.0",
+  "_doc": "Pre-registro de parametros analiticos. Modificar requiere bump de version Y documentar razon en _changelog. Cualquier cambio post-recoleccion DEBE registrarse aqui antes de re-correr.",
+  "config_version": "1.0.0",
+  "frozen_at_utc": "2026-05-30T00:00:00Z",
+  "frozen_by": "Pedro (arquitecto)",
+  "applies_to_project_design_version": "Fase 6.b (2026-05-27)",
+
+  "data": {
+    "db_path_relative": "data/observations.db",
+    "min_n_for_verdict": 1000,
+    "filter_outcome_in": ["Up", "Down"],
+    "filter_is_incomplete": 0,
+    "exclude_window_id": "demo-window",
+    "min_n_trades_15m": 30
+  },
+
+  "split": {
+    "train_holdout_ratio": 0.7,
+    "random_seed": 42,
+    "kfold_n_splits": 5
+  },
+
+  "gate1": {
+    "_question": "Sec 7.B: De las ventanas donde |D| supero un umbral, sign(D) coincidio con outcome en mas del 50%?",
+    "D_variant": "D_15m_otm_dotm",
+    "D_threshold_abs": 5.0,
+    "alpha": 0.05,
+    "min_accuracy_to_advance": 0.55
+  },
+
+  "gate2": {
+    "_question": "Sec 7.B: Cuando pm_up_price_open estaba cerca de 0.50 (mercado indeciso) y |D| era grande, D acerto?",
+    "indecisive_range_inclusive": [0.45, 0.55],
+    "D_variant": "D_15m_otm_dotm",
+    "D_threshold_abs": 5.0,
+    "alpha": 0.05,
+    "min_accuracy_to_advance": 0.55
+  },
+
+  "gate3": {
+    "_question": "Sec 7.B: La senal aparece ANTES de que el precio del contrato se mueva, o al mismo tiempo?",
+    "move_threshold_abs": 0.05,
+    "min_t_move_seconds_to_advance": 30
+  },
+
+  "gate4a": {
+    "_question": "Sec 7.B: El desfase entre deribit_index_open y chainlink_close es menor que el movimiento tipico de la ventana?",
+    "ratio_threshold_to_advance": 1.0
+  },
+
+  "gate4b": {
+    "_question": "Sec 7.B: Simular apuesta con spread + slippage + fees reales. Edge neto positivo despues de costos?",
+    "polymarket_taker_fee_rate": 0.07,
+    "spread_estimate": 0.01,
+    "slippage_estimate": 0.0,
+    "min_ev_per_bet_to_advance": 0.005
+  },
+
+  "bonferroni": {
+    "_doc": "Numero total de tests aplicados en el experimento (Gate 1 + Gate 2 + Gate 3 + Gate 4a + Gate 4b = 5). Si se prueban variantes adicionales, aumentar este numero y documentar.",
+    "n_tests_total": 5,
+    "alpha_corrected_per_test": 0.01
+  },
+
+  "_changelog": [
+    {
+      "version": "1.0.0",
+      "date_utc": "2026-05-30T00:00:00Z",
+      "author": "Pedro",
+      "change": "Pre-registro inicial antes de cualquier analisis estadistico. Umbrales fijados a priori basados en PROJECT_DESIGN seccion 7.B y discusion del 29 mayo 2026."
+    }
+  ]
+}

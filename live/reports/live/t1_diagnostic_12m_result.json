@@ -1,0 +1,18 @@
+{
+  "status": "BLOCKED_STDLIB_WEBSOCKET",
+  "transport": "stdlib",
+  "reason": "WebSocket closed by server code=1000 reason=",
+  "duration_minutes_requested": 12.0,
+  "duration_seconds_actual": 601.05,
+  "raw_trades": 126,
+  "classified_trades": 126,
+  "skipped_trades": 0,
+  "skip_percent": 0.0,
+  "skip_reasons": {},
+  "timeouts": 28,
+  "delta_from_trade": 0,
+  "delta_from_ticker": 126,
+  "delta_missing_after_enrichment": 0,
+  "ticker_fetch_errors": 0,
+  "log_path": "reports/live/t1_diagnostic_12m.log"
+}
