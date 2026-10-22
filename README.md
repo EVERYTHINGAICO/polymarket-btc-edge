@@ -21,7 +21,7 @@
 - **Method**: Two complementary experiments — `live/` (continuous capture, May–Jun 2026) + `backfill/` (historical Dec 2025–Apr 2026, 9,225 windows from CLOB-verified outcomes).
 - **Pre-registration**: Hypothesis and thresholds frozen with SHA256-timestamped commit *before* looking at hold-out data.
 - **Hypotheses tested**: 11 (D variants, momentum spot, PM reversion, orderbook imbalance, market making, …).
-- **Verdict**: No edge for taker after realistic costs. The market is efficient. The retraction of an early "momentum 54%" finding due to lookahead bias is preserved in the handoffs.
+- **Verdict**: The tested hypotheses did not establish a robust executable edge under the studied data and cost assumptions. Some tests remain inconclusive because of sample size or execution-data limitations; these results do not establish market efficiency in general. The retraction of an early "momentum 54%" finding due to lookahead bias is preserved in the handoffs.
 - **Deliverable**: a reproducible methodology, not alpha.
 
 ---
@@ -93,7 +93,8 @@ polymarket-btc-edge/
 |--------|---------------|
 | **Frozen pre-registration** | Hypothesis, variant, threshold, fee, min sample size — all locked in `analysis_config.json` with SHA256 + ISO timestamp *before* hold-out is observed. |
 | **Bonferroni correction** | `α_corrected = α / N_tests` to compensate for multiple comparisons. |
-| **Temporal hold-out** | First 70% of windows = train (exploratory only). Last 30% = sealed hold-out, observed once for the verdict. |
+| **Live / Exp1 split** | [`live/scripts/run_analysis.py`](live/scripts/run_analysis.py) uses a deterministic random 70/30 train/hold-out split: [`deterministic_train_holdout_split`](live/src/analysis/stats.py) shuffles row indices with a fixed seed. This is not a chronological hold-out. |
+| **Historical / Exp2 split** | [`backfill/scripts/run_analysis_exp2.py`](backfill/scripts/run_analysis_exp2.py) defaults to a temporal 70/30 split using [`temporal_train_holdout_split`](backfill/src/analysis/stats.py): earlier windows form the training set and later windows form the hold-out. The script also supports a random split for comparison; read each report's `split_method` and `evaluated_on` fields to identify the evaluated sample. |
 | **Bit-exact reproducibility** | Input hash = SHA256 of canonical CSV of input data. Output hash = SHA256 of result dict excluding `run_at_utc`. Two runs with same input + config → identical output_hash. |
 | **Synthetic fixtures** | 16 + 29 unit tests with known-answer datasets verify the calculation pipeline is correct *before* it touches real data. |
 | **No-lookahead tests** | `tests/test_no_lookahead.py` (backfill) asserts no input has timestamp ≥ `ts_open`. |
@@ -114,8 +115,10 @@ polymarket-btc-edge/
 ## Status
 
 **v0.9-beta** — code, pre-registration, and partial live capture are public.
-Final verdict (n ≥ 1000 live windows) expected around **2026-06-07**.
-`v1.0` will tag the final report and the closing commit.
+
+The published [live analysis from June 2, 2026](live/reports/phases/fase_7_preliminary_2026-06-02_0907.json) reports `WAIT_FOR_MORE_DATA`; the [June 3 collection note](live/reports/phases/fase_7_forward_collection_started_2026-06-03.md) documents collection work, not a final verdict. The former June 7, 2026 target was a planning estimate and does not establish that the live study reached its required sample size or closed.
+
+Historical results include [M1's failed hold-out confirmation](backfill/reports/phases/m1_rule_001_holdout_verdict.md) and [the momentum scan's unconfirmed executable edge](backfill/reports/phases/momentum_lookback_costed_verdict.md). These findings apply to their respective hypotheses, samples, and execution assumptions. A final live-study claim requires a dated closeout reporting the sample size and preregistered gates.
 
 ---
 
@@ -153,4 +156,4 @@ The paper's modest claim ("directional signal in OTM/DOTM options, weak but pres
 
 ## Acknowledgments
 
-The retracted "momentum 54%" finding was caught by the live experiment's anti-lookahead audit. Credit to bonereaper for sharp comments on Chainlink aggregation behavior and the operational reality of fast-line latency that informed the project's conclusions about market efficiency.
+The retracted "momentum 54%" finding was caught by the live experiment's anti-lookahead audit. Credit to bonereaper for sharp comments on Chainlink aggregation behavior and the operational reality of fast-line latency that informed the project's assessment of executable signals.
